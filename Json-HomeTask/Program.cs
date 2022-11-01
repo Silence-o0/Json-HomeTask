@@ -7,10 +7,10 @@ using System.Text.Json.Serialization;
 public class Book
 {
     [JsonIgnore]
-    public int? PublishingHouseId { get; private set; }
+    public int? PublishingHouseId { get; init; }
     [JsonPropertyName("Title")]
-    public string Name { get; private set; }
-    public PublishingHouse? PublishingHouse { get; private set; }
+    public string Name { get; init; }
+    public PublishingHouse? PublishingHouse { get; init; }
 }
 
 public record class PublishingHouse (int Id, string Name, string Adress);
@@ -32,8 +32,8 @@ internal class Program
         {
             foreach (var book in books)
             {
-                Console.WriteLine($"Код видавництва: {book.PublishingHouseId}; Книга: {book.Name}.");
-                Console.WriteLine($"Видавництво: { book.PublishingHouse?.Id}, { book.PublishingHouse.Name}, { book.PublishingHouse.Adress}.");
+                Console.WriteLine($"Код видавництва: {book.PublishingHouseId};    Книга: {book.Name}.");
+                Console.WriteLine($"Видавництво: {book.PublishingHouse?.Id}, {book.PublishingHouse.Name}, {book.PublishingHouse.Adress}.");
                 Console.WriteLine();
             }
         }
